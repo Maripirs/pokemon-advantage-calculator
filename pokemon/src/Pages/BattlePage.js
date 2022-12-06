@@ -40,12 +40,10 @@ const BattlePage = () => {
     fetchPokemon2()
 }, [])
 
-let pokemon1name = {pokemon1.name.charAt(0).toUpperCase() + pokemon1.name.slice(1)};
-let pokemon1image = 
+// let pokemon1name = {pokemon1.name.charAt(0).toUpperCase() + pokemon1.name.slice(1)};
+// let pokemon1image = ;
 
   return (
-    
-
     <>
       <div className="battle-container">
 
