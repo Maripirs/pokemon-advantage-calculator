@@ -142,6 +142,10 @@ Write function for moves (pokemon) {
 }
 
 
+Moves Details Component:
+
+
+
 Battle Page:
 Import Routes
 Import the Pokemon Card and Results Components

@@ -8,7 +8,7 @@ const BattlePage = () => {
   const [pokemon1, setPokemon1] = useState(null);
   const [pokemon2, setPokemon2] = useState(null);
 
-    //Calculating random ID for the first 151 pokemon
+    //Calculating 2 random ID for the first 151 pokemon
   const id1 = Math.ceil(Math.random() * 151);
   const id2 = Math.ceil(Math.random() * 151);
 
@@ -40,23 +40,16 @@ const BattlePage = () => {
     fetchPokemon2()
 }, [])
 
-// let pokemon1name = {pokemon1.name.charAt(0).toUpperCase() + pokemon1.name.slice(1)};
-// let pokemon1image = ;
+const card1 = Card(pokemon1)
+const card2 = Card(pokemon2)
+
 
   return (
     <>
       <div className="battle-container">
-
-        <h3>{pokemon1.name.charAt(0).toUpperCase() + pokemon1.name.slice(1)}</h3>
-        <h3>{pokemon1 ? <img src={pokemon1.sprites.front_default}/> :"loading..."}</h3>
-        <Card />
-
+        {card1}
         <h3>VS.</h3>
-
-        <h3>{pokemon2.name.charAt(0).toUpperCase() + pokemon2.name.slice(1)}</h3>
-        {pokemon2 ? <img src={pokemon2.sprites.front_default}/> :"loading..."}
-        <Card />
-
+        {card2}
       </div>
       <Results />
     </>
