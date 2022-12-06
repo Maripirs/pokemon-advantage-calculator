@@ -10,6 +10,7 @@ function App() {
         Pokémon Advantage Calculator
       </header>
       <main>
+        <BattlePage/>
       </main>
     </div>
   );
