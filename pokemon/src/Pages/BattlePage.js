@@ -3,6 +3,10 @@ import Results from "../Components/Results";
 import "./BattlePage.css"
 
 const BattlePage = () => {
+
+
+
+    
  return(
     <>
         <div className="battle-container">
