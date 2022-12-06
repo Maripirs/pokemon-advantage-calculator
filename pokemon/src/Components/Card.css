@@ -1,0 +1,15 @@
+.cards-container{
+    height: 40vh;
+    width: 25vh;
+    background-color: rgb(175, 208, 175)
+}
+.card-top{
+    height: 10%;
+    width: 90%;
+}
+
+.img{
+    height: 40%;
+    width: 90;
+    background-color: rgb(226, 202, 43);
+}

@@ -1,0 +1,15 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.battle-container{
+    display: flex;
+    flex-direction: row;
+    width: 60vw;
+    height: 50vh;
+    justify-content: space-between;
+    align-items: center;
+}
