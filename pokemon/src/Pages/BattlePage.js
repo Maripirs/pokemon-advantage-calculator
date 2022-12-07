@@ -24,11 +24,12 @@ const BattlePage = () => {
   const [pokemonInBattle, setPokemonInBattle] = useState(initialState)
   const updatePokemonMoveTypes = (pokemonInd, moveToAdd, moveInd) =>{
     let newPokemonInBattle = [...pokemonInBattle]
-    newPokemonInBattle[pokemonInd][moveInd] = moveToAdd
+    newPokemonInBattle[pokemonInd].pokemonMovesTypes[moveInd] = moveToAdd
     setPokemonInBattle(newPokemonInBattle)
   }
   
   const pokemonState = [pokemonInBattle, updatePokemonMoveTypes]
+
   
   //Calculating 2 random ID for the first 151 pokemon
   const id1 = Math.ceil(Math.random() * 151);
@@ -68,8 +69,8 @@ const BattlePage = () => {
     fetchPokemon2()
 }, [])
 
-const card1 = Card(pokemon1, pokemonState)
-const card2 = Card(pokemon2, pokemonState)
+const card1 = Card(pokemon1, pokemonState, 0)
+const card2 = Card(pokemon2, pokemonState, 1)
 
 const resultsDiv = Results(pokemonInBattle) 
 

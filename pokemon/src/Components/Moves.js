@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import BattlePage from "../Pages/BattlePage";
 import "./Moves.css";
 
-const Moves = (pokemon) => {
+const Moves = (pokemon, pokemonState, index) => {
 
   //setting useState to empty array
   const [pokemonMoves, setPokemonMoves] = useState([]);
@@ -30,7 +30,10 @@ const Moves = (pokemon) => {
             newPokemonMoves[i] = {
               moveName: response.name,
               moveType: response.type.name,
-            };
+            }
+            let pokemonInBattle = pokemonState[0]
+            pokemonState[1](index, response.type.name, i)
+
           })
           .catch(console.error);
       }
@@ -38,6 +41,7 @@ const Moves = (pokemon) => {
       //delays setting newPokemonMoves to setPokemonMoves to let data generate
       setTimeout(() => {
         setPokemonMoves(newPokemonMoves);
+        console.log("pokemonstate0", pokemonState[0])
       }, 500);
       return newPokemonMoves;
     } else {

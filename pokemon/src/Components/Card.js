@@ -4,7 +4,7 @@ import BattlePage from "../Pages/BattlePage";
 import "./Card.css";
 
 //Writing a function called Card that takes in the pokemon
-const Card = (pokemon, index) => {
+const Card = (pokemon, pokemonState, index) => {
 
     // if(!pokemon){
     //     console.log("loading")
@@ -12,7 +12,7 @@ const Card = (pokemon, index) => {
     //     console.log(pokemon.moves)
     // }
 
-    let pokeMoves = Moves(pokemon)
+    let pokeMoves = Moves(pokemon, pokemonState, index)
     
 
 
