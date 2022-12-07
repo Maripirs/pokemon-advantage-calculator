@@ -30,6 +30,7 @@ const Moves = (pokemon, pokemonState, index) => {
             newPokemonMoves[i] = {
               moveName: response.name,
               moveType: response.type.name,
+              moveID: response.id
             }
             let pokemonInBattle = pokemonState[0]
             pokemonState[1](index, response.type.name, i)
