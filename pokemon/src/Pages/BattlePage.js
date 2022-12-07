@@ -8,6 +8,26 @@ const BattlePage = () => {
   const [pokemon1, setPokemon1] = useState(null);
   const [pokemon2, setPokemon2] = useState(null);
 
+    //set initialState for 2 empty pokemon 
+  const initialState = [
+    {
+      pokemonObject: null, //Pokemon Obj
+      pokemonName: null,  //Name str
+      pokemonType: null,  // Type str
+      pokemonMovesTypes: [null, null, null, null] //4 type strings
+    },
+    {
+      pokemonObject: null,
+      pokemonName: null,
+      pokemonType: null,
+      pokemonMovesTypes: [null, null, null, null]
+    }
+  ]
+
+
+  const [pokemonInBattle, setPokemonInBattle] = useState(initialState)
+
+
     //Calculating 2 random ID for the first 151 pokemon
   const id1 = Math.ceil(Math.random() * 151);
   const id2 = Math.ceil(Math.random() * 151);
@@ -43,6 +63,7 @@ const BattlePage = () => {
 const card1 = Card(pokemon1)
 const card2 = Card(pokemon2)
 
+const resultsDiv = Results(pokemonInBattle) 
 
   return (
     <>
@@ -51,7 +72,7 @@ const card2 = Card(pokemon2)
         <h3>VS.</h3>
         {card2}
       </div>
-      <Results />
+      {resultsDiv}
     </>
   );
 };
