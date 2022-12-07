@@ -1,28 +1,42 @@
 import Moves from "./Moves";
+import { useEffect, useState } from "react"
 import BattlePage from "../Pages/BattlePage";
-import "./Card.css"
+import "./Card.css";
 
-
-
+//Writing a function called Card that takes in the pokemon
 const Card = (pokemon) => {
 
-const pokeMoves = Moves(pokemon)
+    // if(!pokemon){
+    //     console.log("loading")
+    // } else {
+    //     console.log(pokemon.moves)
+    // }
 
-    return (
-        <div className="cards-container">
-            
-            <div className="card-top">
-                <h3>{pokemon ? `${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}` :"loading..."}</h3>
-            </div>
+    let pokeMoves = Moves(pokemon)
+    
 
-            <div className="img">
-                <h3>{pokemon ? <img src={pokemon.sprites.front_default}/> :"loading..."}</h3>
-            </div>
 
-            {pokeMoves}
+  return (
+    <div className="cards-container">
+      <div className="card-top">
+        <h3>
+{/*  this is the pokemon name */}
+          {pokemon
+            ? `${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}`
+            : "loading..."}
+        </h3>
+      </div>
 
-        </div>
-    )
-}
+      <div className="img">
+        <h3>
+{/* this is the pokemon image */}
+          {pokemon ? <img src={pokemon.sprites.front_default} /> : "loading..."}
+        </h3>
+      </div>
+{/* if pokeMoves exists, then run pokeMoves */}
+      {pokeMoves}
+    </div>
+  );
+};
 
 export default Card;
