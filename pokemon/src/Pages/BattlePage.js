@@ -8,17 +8,42 @@ const BattlePage = () => {
   const [pokemon1, setPokemon1] = useState(null);
   const [pokemon2, setPokemon2] = useState(null);
 
-    //Calculating 2 random ID for the first 151 pokemon
+    //set initialState for 2 empty pokemon 
+  const initialState = [
+    {
+      pokemonObject: null, //Pokemon Obj
+      pokemonMovesTypes: [null, null, null, null] //4 type strings
+    },
+    {
+      pokemonObject: null,
+      pokemonMovesTypes: [null, null, null, null]
+    }
+  ]
+
+
+  const [pokemonInBattle, setPokemonInBattle] = useState(initialState)
+  const updatePokemonMoveTypes = (pokemonInd, moveToAdd, moveInd) =>{
+    let newPokemonInBattle = [...pokemonInBattle]
+    newPokemonInBattle[pokemonInd][moveInd] = moveToAdd
+    setPokemonInBattle(newPokemonInBattle)
+  }
+  
+  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes]
+  
+  //Calculating 2 random ID for the first 151 pokemon
   const id1 = Math.ceil(Math.random() * 151);
   const id2 = Math.ceil(Math.random() * 151);
-
-    //Fetch the pokemon 1
+  
+  //Fetch the pokemon 1
   const fetchPokemon1 = () => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id1}`)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log("res JSON", response);
-        setPokemon1(response);
+    .then((response) => response.json())
+    .then((response) => {
+      console.log("res JSON", response);
+      setPokemon1(response);
+      let newPokemonInBattle = [...pokemonInBattle]
+      newPokemonInBattle[0].pokemonObject = response
+      setPokemonInBattle(newPokemonInBattle)
       })
       .catch(console.error);
   };
@@ -30,6 +55,9 @@ const BattlePage = () => {
       .then((response) => {
         console.log("res JSON", response);
         setPokemon2(response);
+        let newPokemonInBattle = [...pokemonInBattle]
+        newPokemonInBattle[1].pokemonObject = response
+        setPokemonInBattle(newPokemonInBattle)
       })
       .catch(console.error);
   };
@@ -40,9 +68,10 @@ const BattlePage = () => {
     fetchPokemon2()
 }, [])
 
-const card1 = Card(pokemon1)
-const card2 = Card(pokemon2)
+const card1 = Card(pokemon1, pokemonState)
+const card2 = Card(pokemon2, pokemonState)
 
+const resultsDiv = Results(pokemonInBattle) 
 
   return (
     <>
@@ -51,7 +80,7 @@ const card2 = Card(pokemon2)
         <h3>VS.</h3>
         {card2}
       </div>
-      <Results />
+      {resultsDiv}
     </>
   );
 };
