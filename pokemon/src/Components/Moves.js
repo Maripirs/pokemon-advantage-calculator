@@ -54,6 +54,29 @@ const Moves = (pokemon) => {
 
 
 
+
+
+
+// const [allPokemonMoves, setAllPokemonMoves] = useState([])
+
+// const arr = () => {
+//   setAllPokemonMoves(pokemonMoves)
+//   console.log("pokemonMoves", allPokemonMoves[0])
+// }
+
+// useEffect(() => {
+//   arr()
+// }, [])
+
+
+
+
+
+
+
+
+
+
   const allMovesFunction = () => {
     return (
       <>
