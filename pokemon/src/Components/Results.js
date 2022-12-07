@@ -122,7 +122,10 @@ const Results = (pokemonInBattle) => {
     if(buttonClicked){
         return(
             <div className="results-container">
-                <h3>Results will be here. We are working for you</h3>
+                <div>
+                    <h3>Results will be here. We are working for you</h3>
+                    <h1>🚧</h1>
+                </div>
                 {/* <h3>Pokemon1 score is = {pokemonScores[0]}</h3>
                 <h3>Pokemon2 score is = {pokemonScores[1]}</h3>
                 <h3>{calculateAdvantage}</h3> */}

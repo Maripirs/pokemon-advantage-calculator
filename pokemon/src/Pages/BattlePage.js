@@ -12,33 +12,38 @@ const BattlePage = () => {
   const initialState = [
     {
       pokemonObject: null, //Pokemon Obj
-      pokemonName: null,  //Name str
-      pokemonType: null,  // Type str
       pokemonMovesTypes: [null, null, null, null] //4 type strings
     },
     {
       pokemonObject: null,
-      pokemonName: null,
-      pokemonType: null,
       pokemonMovesTypes: [null, null, null, null]
     }
   ]
 
 
   const [pokemonInBattle, setPokemonInBattle] = useState(initialState)
-
-
-    //Calculating 2 random ID for the first 151 pokemon
+  const updatePokemonMoveTypes = (pokemonInd, moveToAdd, moveInd) =>{
+    let newPokemonInBattle = [...pokemonInBattle]
+    newPokemonInBattle[pokemonInd][moveInd] = moveToAdd
+    setPokemonInBattle(newPokemonInBattle)
+  }
+  
+  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes]
+  
+  //Calculating 2 random ID for the first 151 pokemon
   const id1 = Math.ceil(Math.random() * 151);
   const id2 = Math.ceil(Math.random() * 151);
-
-    //Fetch the pokemon 1
+  
+  //Fetch the pokemon 1
   const fetchPokemon1 = () => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id1}`)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log("res JSON", response);
-        setPokemon1(response);
+    .then((response) => response.json())
+    .then((response) => {
+      console.log("res JSON", response);
+      setPokemon1(response);
+      let newPokemonInBattle = [...pokemonInBattle]
+      newPokemonInBattle[0].pokemonObject = response
+      setPokemonInBattle(newPokemonInBattle)
       })
       .catch(console.error);
   };
@@ -50,6 +55,9 @@ const BattlePage = () => {
       .then((response) => {
         console.log("res JSON", response);
         setPokemon2(response);
+        let newPokemonInBattle = [...pokemonInBattle]
+        newPokemonInBattle[1].pokemonObject = response
+        setPokemonInBattle(newPokemonInBattle)
       })
       .catch(console.error);
   };
@@ -60,8 +68,8 @@ const BattlePage = () => {
     fetchPokemon2()
 }, [])
 
-const card1 = Card(pokemon1)
-const card2 = Card(pokemon2)
+const card1 = Card(pokemon1, pokemonState)
+const card2 = Card(pokemon2, pokemonState)
 
 const resultsDiv = Results(pokemonInBattle) 
 
