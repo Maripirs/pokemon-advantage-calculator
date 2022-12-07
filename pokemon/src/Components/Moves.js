@@ -3,18 +3,29 @@ import BattlePage from "../Pages/BattlePage";
 import "./Moves.css";
 
 const Moves = (pokemon) => {
+
+  //setting useState to empty array
   const [pokemonMoves, setPokemonMoves] = useState([]);
 
+  //writing a function for getMoves
   function getMoves() {
+    //if pokemon is true
     if (pokemon) {
+      //let newPokemonMoves = the contents of pokemonMoves
       let newPokemonMoves = [...pokemonMoves];
+
+      //for loop for 4 random moves
       for (let i = 0; i < 4; i++) {
         const randomMoveIndex = Math.floor(
           Math.random() * pokemon.moves.length
         );
+
+        //setting the URL 
         let movesURL = pokemon.moves[randomMoveIndex].move.url;
+        //fetching the URL with the variable
         fetch(movesURL)
           .then((response) => response.json())
+          //response is each of the index at the loop
           .then((response) => {
             newPokemonMoves[i] = {
               moveName: response.name,
@@ -24,6 +35,7 @@ const Moves = (pokemon) => {
           .catch(console.error);
       }
 
+      //delays setting newPokemonMoves to setPokemonMoves to let data generate
       setTimeout(() => {
         setPokemonMoves(newPokemonMoves);
       }, 500);
@@ -34,9 +46,13 @@ const Moves = (pokemon) => {
     }
   }
 
+
+//prevents the function from an infinite loop. only runs when the value/data pokemon changes
   useEffect(() => {
     getMoves();
   }, [pokemon]);
+
+
 
   const allMovesFunction = () => {
     return (
@@ -44,7 +60,7 @@ const Moves = (pokemon) => {
         <div className="moveLine">
           {pokemonMoves[0] ? (
             <p>
-              {pokemonMoves[0].moveName} {pokemonMoves[0].moveType}
+              {pokemonMoves[0].moveName.charAt(0).toUpperCase() + pokemonMoves[0].moveName.slice(1)}, {pokemonMoves[0].moveType.charAt(0).toUpperCase() + pokemonMoves[0].moveType.slice(1)}
             </p>
           ) : (
             "loading..."
@@ -53,7 +69,7 @@ const Moves = (pokemon) => {
         <div className="moveLine">
           {pokemonMoves[1] ? (
             <p>
-              {pokemonMoves[1].moveName} {pokemonMoves[1].moveType}
+              {pokemonMoves[1].moveName.charAt(1).toUpperCase() + pokemonMoves[1].moveName.slice(1)}, {pokemonMoves[1].moveType.charAt(0).toUpperCase() + pokemonMoves[1].moveType.slice(1)}
             </p>
           ) : (
             "loading..."
@@ -62,7 +78,7 @@ const Moves = (pokemon) => {
         <div className="moveLine">
           {pokemonMoves[2] ? (
             <p>
-              {pokemonMoves[2].moveName} {pokemonMoves[2].moveType}
+              {pokemonMoves[2].moveName.charAt(0).toUpperCase() + pokemonMoves[2].moveName.slice(1)}, {pokemonMoves[2].moveType.charAt(0).toUpperCase() + pokemonMoves[2].moveType.slice(1)}
             </p>
           ) : (
             "loading..."
@@ -71,7 +87,7 @@ const Moves = (pokemon) => {
         <div className="moveLine">
           {pokemonMoves[3] ? (
             <p>
-              {pokemonMoves[3].moveName} {pokemonMoves[3].moveType}
+              {pokemonMoves[3].moveName.charAt(0).toUpperCase() + pokemonMoves[3].moveName.slice(1)}, {pokemonMoves[3].moveType.charAt(0).toUpperCase() + pokemonMoves[3].moveType.slice(1)}
             </p>
           ) : (
             "loading..."
@@ -83,6 +99,9 @@ const Moves = (pokemon) => {
 
   const [allMoves, setAllMoves] = useState("");
 
+
+
+
   useEffect(() => {
     console.log("function", pokemonMoves);
     if (pokemonMoves) {
@@ -90,7 +109,15 @@ const Moves = (pokemon) => {
     }
   }, [pokemonMoves]);
 
-  return <div className="moves-container">{allMoves}</div>;
+
+
+
+
+
+  return (
+  <div className="moves-container">
+    {allMoves}
+  </div>)
 };
 
 export default Moves;
