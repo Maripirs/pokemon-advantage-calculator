@@ -2,10 +2,7 @@ import Card from "../Components/Card";
 import Results from "../Components/Results";
 import "./BattlePage.css";
 import { useState, useEffect } from "react"
-import MovesDetails from "../Components/MovesDetails";
-import Moves from "../Components/Moves";
 
-const BattlePage = () => {
     //Setting use state for pokemon 1 and 2
   const [pokemon1, setPokemon1] = useState(null);
   const [pokemon2, setPokemon2] = useState(null);
@@ -102,7 +99,6 @@ const resultsDiv = Results(pokemonInBattle)
 
       {resultsDiv}
     </>
-  );
-};
+  );;
 
 export default BattlePage;

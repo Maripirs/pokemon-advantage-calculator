@@ -4,61 +4,50 @@ import "./Moves.css";
 import MovesDetails from "./MovesDetails";
 
 const Moves = (pokemon, pokemonState, index) => {
-  //setting useState to empty array
+
   const [pokemonMoves, setPokemonMoves] = useState([]);
 
-  //writing a function for getMoves
+
   function getMoves() {
-    //if pokemon is true
+
     if (pokemon) {
-      //let newPokemonMoves = the contents of pokemonMoves
       let newPokemonMoves = [...pokemonMoves];
 
-      //for loop for 4 random moves
       for (let i = 0; i < 4; i++) {
         const randomMoveIndex = Math.floor(
           Math.random() * pokemon.moves.length
         );
 
-        //setting the URL
         let movesURL = pokemon.moves[randomMoveIndex].move.url;
-        //fetching the URL with the variable
         fetch(movesURL)
           .then((response) => response.json())
-          //response is each of the index at the loop
           .then((response) => {
             newPokemonMoves[i] = {
               moveName: response.name,
               moveType: response.type.name,
               moveID: response.id,
             };
-            let pokemonInBattle = pokemonState[0];
             pokemonState[1](index, response.type.name, i);
           })
           .catch(console.error);
       }
 
-      //delays setting newPokemonMoves to setPokemonMoves to let data generate
       setTimeout(() => {
         setPokemonMoves(newPokemonMoves);
-        // console.log("newpokemonMoves", newPokemonMoves);
-        // console.log("pokemonmoves", pokemonMoves);
       }, 1000);
     } else {
       console.log("loading");
     }
   }
 
-  //prevents the function from an infinite loop. only runs when the value/data pokemon changes
+
   useEffect(() => {
     getMoves();
   }, [pokemon]);
 
-  //setting useState for the click
   const [clicked, setClicked] = useState(false);
 
 
-  //setting the function of GetDetails to run MovesDetails()
   const { GetDetails } = MovesDetails();
 
 
@@ -129,14 +118,6 @@ const Moves = (pokemon, pokemonState, index) => {
 
 
   const [allMoves, setAllMoves] = useState("");
-
-
-
-  // useEffect(() => {
-  //   if(pokemonMoves) {
-  //     setAllListDetails(allListDetailsFunction());
-  //   }
-  // }, [pokemonMoves])
 
   useEffect(() => {
     console.log("function", pokemonMoves);
