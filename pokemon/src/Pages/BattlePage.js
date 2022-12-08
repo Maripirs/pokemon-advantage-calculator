@@ -3,7 +3,6 @@ import Results from "../Components/Results";
 import "./BattlePage.css";
 import { useState, useEffect } from "react"
 
-const BattlePage = () => {
     //Setting use state for pokemon 1 and 2
   const [pokemon1, setPokemon1] = useState(null);
   const [pokemon2, setPokemon2] = useState(null);
@@ -25,18 +24,14 @@ const BattlePage = () => {
 
 
   const [pokemonInBattle, setPokemonInBattle] = useState(initialState)
+
   const updatePokemonMoveTypes = (pokemonInd, moveToAdd, moveInd) =>{
     let newPokemonInBattle = [...pokemonInBattle]
     newPokemonInBattle[pokemonInd].pokemonMovesTypes[moveInd] = moveToAdd
     setPokemonInBattle(newPokemonInBattle)
   }
-  const updateDetails = (allInfo) =>{
-    let newPokemonInBattle = [...pokemonInBattle]
-    newPokemonInBattle[2].details = allInfo
-    setPokemonInBattle(newPokemonInBattle)
-  }
   
-  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes, updateDetails]
+  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes]
 
   
   //Calculating 2 random ID for the first 151 pokemon
@@ -48,7 +43,7 @@ const BattlePage = () => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id1}`)
     .then((response) => response.json())
     .then((response) => {
-      console.log("res JSON", response);
+      // console.log("res JSON", response);
       setPokemon1(response);
       let newPokemonInBattle = [...pokemonInBattle]
       newPokemonInBattle[0].pokemonObject = response
@@ -62,7 +57,7 @@ const BattlePage = () => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id2}`)
       .then((response) => response.json())
       .then((response) => {
-        console.log("res JSON", response);
+        // console.log("res JSON", response);
         setPokemon2(response);
         let newPokemonInBattle = [...pokemonInBattle]
         newPokemonInBattle[1].pokemonObject = response
@@ -89,13 +84,8 @@ const resultsDiv = Results(pokemonInBattle)
         <h3>VS.</h3>
         {card2}
       </div>
-      <div className ="details">
-        {pokemonInBattle[3]}
-      </div>
-
       {resultsDiv}
     </>
-  );
-};
+  );;
 
 export default BattlePage;
