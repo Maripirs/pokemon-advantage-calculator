@@ -38,7 +38,9 @@ const Results = (pokemonInBattle) => {
         setTimeout(()=>{
             if(pokemonInBattle[0].pokemonObject && pokemonInBattle[1].pokemonObject){
                 fetchPokemonTypes()
+
             }
+
         }, 200)
     }, [pokemonInBattle])
 
@@ -63,19 +65,20 @@ const Results = (pokemonInBattle) => {
                     modifiers[i] = 0
                 }
             }
-            console.log('move', j+1 , ": score ", modifiers[0]*modifiers[1])
+
             //Will add this move's value to the pokemon score
             pokemon1Score += (modifiers[0]*modifiers[1])
         }
-        console.log("pokemon1 Score", pokemon1Score)
+
         return pokemon1Score
     }
 
     const calculatePokemon2Score = () =>{
+
         pokemon2Score = 0
         for (let j = 0; j < 4; j++){
             let modifiers = [1,1]
-            for (let i = 0 ; i < pokemonTypes[1].length; i++){
+            for (let i = 0 ; i < pokemonTypes[0].length; i++){
                 if (pokemonTypes[0][i].damage_relations.double_damage_from.some(e=> e.name === pokemonInBattle[1].pokemonMovesTypes[j])){
                     modifiers[i] = 2
                 } else if (pokemonTypes[0][i].damage_relations.half_damage_from.some(e=> e.name === pokemonInBattle[1].pokemonMovesTypes[j])){
@@ -86,49 +89,49 @@ const Results = (pokemonInBattle) => {
                 }
 
             }
-            console.log('move', j+1 , ": score ", modifiers[0]*modifiers[1])
+
             pokemon2Score += (modifiers[0]*modifiers[1])
         }
-        console.log("pokemon2 Score", pokemon2Score)
+
         return pokemon2Score
     }
 
 
-    useEffect(() =>{
-        setTimeout(()=>{
-
-            if (pokemonInBattle[0].pokemonObject){
-                pokemon1Score = calculatePokemon1Score()
-                pokemon2Score = calculatePokemon2Score()
-                setPokemonScores([pokemon1Score, pokemon2Score])
-            }
-        }, 200)
-    }, [doneWithPokemon])
 
     const calculateAdvantage = () =>{
-        if (pokemonScores[0] > pokemonScores[1]){
+        if (pokemon1Score > pokemon2Score){
             return `${pokemonInBattle[0].pokemonObject.name} is at a type advantage`
-        }else if (pokemonScores[0] < pokemonScores[1]){
+        }else if (pokemon1Score < pokemon2Score){
             return `${pokemonInBattle[1].pokemonObject.name} is at a type advantage`
         } else{
             return `No pokemon has a type advantage`
         }
     }
+    let [resultText, setResultText] = useState('')
 
     const RevealResults =() =>{
         setButtonClicked(true)
+        if (pokemonInBattle[0].pokemonObject){
+            pokemon1Score = calculatePokemon1Score()
+            pokemon2Score = calculatePokemon2Score()
+            setPokemonScores([pokemon1Score, pokemon2Score])
+
+
+            setResultText(calculateAdvantage())
+
+        }
     }
 
     if(buttonClicked){
         return(
             <div className="results-container">
-                <div>
+                {/* <div>
                     <h3>Results will be here. We are working for you</h3>
                     <h1>🚧</h1>
-                </div>
-                {/* <h3>Pokemon1 score is = {pokemonScores[0]}</h3>
-                <h3>Pokemon2 score is = {pokemonScores[1]}</h3>
-                <h3>{calculateAdvantage}</h3> */}
+                </div> */}
+                <h3>{pokemonInBattle[0].pokemonObject.name} score is = {pokemonScores[0]}</h3>
+                <h3>{pokemonInBattle[1].pokemonObject.name} score is = {pokemonScores[1]}</h3>
+                <h1>{resultText}</h1>
             </div>
         )
     } else{    

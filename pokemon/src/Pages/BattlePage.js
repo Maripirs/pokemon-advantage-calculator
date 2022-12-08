@@ -17,6 +17,9 @@ const BattlePage = () => {
     {
       pokemonObject: null,
       pokemonMovesTypes: [null, null, null, null]
+    },
+    {
+      details: null
     }
   ]
 
@@ -27,8 +30,13 @@ const BattlePage = () => {
     newPokemonInBattle[pokemonInd].pokemonMovesTypes[moveInd] = moveToAdd
     setPokemonInBattle(newPokemonInBattle)
   }
+  const updateDetails = (allInfo) =>{
+    let newPokemonInBattle = [...pokemonInBattle]
+    newPokemonInBattle[2].details = allInfo
+    setPokemonInBattle(newPokemonInBattle)
+  }
   
-  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes]
+  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes, updateDetails]
 
   
   //Calculating 2 random ID for the first 151 pokemon
@@ -81,6 +89,10 @@ const resultsDiv = Results(pokemonInBattle)
         <h3>VS.</h3>
         {card2}
       </div>
+      <div className ="details">
+        {pokemonInBattle[3]}
+      </div>
+
       {resultsDiv}
     </>
   );
