@@ -3,6 +3,8 @@ import Results from "../Components/Results";
 import "./BattlePage.css";
 import { useState, useEffect } from "react"
 
+const BattlePage = () => {
+
     //Setting use state for pokemon 1 and 2
   const [pokemon1, setPokemon1] = useState(null);
   const [pokemon2, setPokemon2] = useState(null);
@@ -30,8 +32,15 @@ import { useState, useEffect } from "react"
     newPokemonInBattle[pokemonInd].pokemonMovesTypes[moveInd] = moveToAdd
     setPokemonInBattle(newPokemonInBattle)
   }
+
+  const updateDetails = (allInfo) =>{
+    let newPokemonInBattle = [...pokemonInBattle]
+    newPokemonInBattle[2].details = allInfo
+    setPokemonInBattle(newPokemonInBattle)
+  }
   
-  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes]
+  
+  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes, updateDetails]
 
   
   //Calculating 2 random ID for the first 151 pokemon
@@ -84,8 +93,14 @@ const resultsDiv = Results(pokemonInBattle)
         <h3>VS.</h3>
         {card2}
       </div>
+      <div className="details"> 
+        {pokemonInBattle[2].details}
+      </div>
+
       {resultsDiv}
+
     </>
-  );;
+  )
+  }
 
 export default BattlePage;

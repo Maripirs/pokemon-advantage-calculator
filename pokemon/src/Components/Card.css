@@ -1,15 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 .cards-container{
-    height: 40vh;
-    width: 25vh;
-    background-color: rgb(175, 208, 175)
+    height: 38vh;
+    width: 30vh;
+    background-color: rgb(175, 208, 175);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.5vh;
 }
+
 .card-top{
     height: 10%;
     width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 15px;
 }
 
-.img{
+
+
+
+.img-container{
     height: 40%;
-    width: 90;
+    width: 90%;
     background-color: rgb(226, 202, 43);
+    display: flex;
+    justify-content: center;
+}
+
+.moves-container{
+    height: 40% ;
+    width: 90%;
+}
+
+.pokemon-img {
+    height: 100%;
+    width: auto;
+}
+
+.card-name{
+    height: 30px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    margin-left: 0.5em;
+}
+
+
+.type{
+    background-color: #C0C0C0;
+    border-radius: 10px;
+    border: solid 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    height: 2em;
+    color: white;
+    text-shadow: -1px 1px 0 #000,
+                          1px 1px 0 #000,
+                         1px -1px 0 #000,
+                        -1px -1px 0 #000;
+}
+
+.move-row .type {
+    width: 40%;
+
+}
+
+.type-container .type{
+    padding: 0 1em;
+    margin-left: 1em;
+}
+
+.type-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 40%;
+
 }

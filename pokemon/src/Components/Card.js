@@ -1,39 +1,46 @@
 import Moves from "./Moves";
-import { useEffect, useState } from "react"
-import BattlePage from "../Pages/BattlePage";
 import "./Card.css";
 
-//Writing a function called Card that takes in the pokemon
 const Card = (pokemon, pokemonState, index) => {
-
-    // if(!pokemon){
-    //     console.log("loading")
-    // } else {
-    //     console.log(pokemon.moves)
-    // }
-
-    let pokeMoves = Moves(pokemon, pokemonState, index)
-    
-
+  let pokeMoves = Moves(pokemon, pokemonState, index);
 
   return (
     <div className="cards-container">
       <div className="card-top">
-        <h3>
-{/*  this is the pokemon name */}
+        <h3 className="card-name">
           {pokemon
-            ? `${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}`
+            ? pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
             : "loading..."}
         </h3>
+        <div className="type-container">
+          <div className="type">
+            <p className="type-text">
+              {pokemon
+                ? pokemon.types[0].type.name.charAt(0).toUpperCase() +
+                  pokemon.types[0].type.name.slice(1)
+                : "loading..."}{" "}
+            </p>
+          </div>
+          {pokemon ? 
+              pokemon.types[1] ?  
+                <div className="type">
+                  <p className="type-text">
+                    {pokemon.types[1].type.name.charAt(0).toUpperCase() +
+                          pokemon.types[1].type.name.slice(1)}
+                  </p>
+                </div>
+        : <p></p>
+        : <p></p>}
+        </div>
       </div>
 
-      <div className="img">
-        <h3>
-{/* this is the pokemon image */}
-          {pokemon ? <img src={pokemon.sprites.front_default} /> : "loading..."}
-        </h3>
+      <div className="img-container">
+          {pokemon ? (
+            <img className="pokemon-img" src={pokemon.sprites.front_default} />
+          ) : (
+            "loading..."                                 
+          )}
       </div>
-{/* if pokeMoves exists, then run pokeMoves */}
       {pokeMoves}
     </div>
   );

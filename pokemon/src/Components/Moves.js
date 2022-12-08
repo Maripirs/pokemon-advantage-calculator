@@ -4,12 +4,9 @@ import "./Moves.css";
 import MovesDetails from "./MovesDetails";
 
 const Moves = (pokemon, pokemonState, index) => {
-
   const [pokemonMoves, setPokemonMoves] = useState([]);
 
-
   function getMoves() {
-
     if (pokemon) {
       let newPokemonMoves = [...pokemonMoves];
 
@@ -40,92 +37,56 @@ const Moves = (pokemon, pokemonState, index) => {
     }
   }
 
-
   useEffect(() => {
     getMoves();
   }, [pokemon]);
 
   const [clicked, setClicked] = useState(false);
 
-
   const { GetDetails } = MovesDetails();
 
-
   const handleClick = (e) => {
+    console.log(e.target.closest(".move-row"))
     setClicked(true);
-    GetDetails(e.target.id, pokemonState);
+    GetDetails(e.target.closest(".move-row").id, pokemonState);
   };
 
   const allMovesFunction = () => {
+    let movesArray = [];
+    for (let i = 0; i < 4; i++) {
+      movesArray[i] = pokemonMoves[i] ? (
+        <div className="move-row" onClick={handleClick} id={pokemonMoves[i].moveID}>
+          <div className="move-name">
+            {pokemonMoves[i].moveName.charAt(0).toUpperCase() +
+              pokemonMoves[i].moveName.slice(1)}
+          </div>
+          <div className="type">
+            {pokemonMoves[i].moveType.charAt(0).toUpperCase() +
+              pokemonMoves[i].moveType.slice(1)}
+          </div>
+        </div>
+      ) : (
+        "loading..."
+      );
+    }
+
     return (
       <>
-        <div className="moveLine">
-          {pokemonMoves[0] ? (
-            <p onClick={handleClick} id={pokemonMoves[0].moveID}>
-              {pokemonMoves[0].moveName.charAt(0).toUpperCase() +
-                pokemonMoves[0].moveName.slice(1)}
-              ,{" "}
-              {pokemonMoves[0].moveType.charAt(0).toUpperCase() +
-                pokemonMoves[0].moveType.slice(1)}
-            </p>
-          ) : (
-            "loading..."
-          )}
-        </div>
-        <div className="moveLine">
-          {pokemonMoves[1] ? (
-            <p onClick={handleClick} id={pokemonMoves[1].moveID}>
-              {pokemonMoves[1].moveName.charAt(0).toUpperCase() +
-                pokemonMoves[1].moveName.slice(1)}
-              ,{" "}
-              {pokemonMoves[1].moveType.charAt(0).toUpperCase() +
-                pokemonMoves[1].moveType.slice(1)}
-            </p>
-          ) : (
-            "loading..."
-          )}
-        </div>
-        <div className="moveLine">
-          {pokemonMoves[2] ? (
-            <p onClick={handleClick} id={pokemonMoves[2].moveID}>
-              {pokemonMoves[2].moveName.charAt(0).toUpperCase() +
-                pokemonMoves[2].moveName.slice(1)}
-              ,{" "}
-              {pokemonMoves[2].moveType.charAt(0).toUpperCase() +
-                pokemonMoves[2].moveType.slice(1)}
-            </p>
-          ) : (
-            "loading..."
-          )}
-        </div>
-        <div className="moveLine">
-          {pokemonMoves[3] ? (
-            <p onClick={handleClick} id={pokemonMoves[3].moveID}>
-              {pokemonMoves[3].moveName.charAt(0).toUpperCase() +
-                pokemonMoves[3].moveName.slice(1)}
-              ,{" "}
-              {pokemonMoves[3].moveType.charAt(0).toUpperCase() +
-                pokemonMoves[3].moveType.slice(1)}
-            </p>
-          ) : (
-            "loading..."
-          )}
-        </div>
+          {movesArray[0]}
+          {movesArray[1]}
+          {movesArray[2]}
+          {movesArray[3]}
       </>
     );
   };
 
-
-
   const [allMoves, setAllMoves] = useState("");
 
   useEffect(() => {
-    console.log("function", pokemonMoves);
     if (pokemonMoves) {
       setAllMoves(allMovesFunction());
     }
   }, [pokemonMoves]);
-
 
   return (
     <>
