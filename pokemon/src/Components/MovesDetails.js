@@ -1,35 +1,43 @@
 import Moves from "./Moves";
 import "./MovesDetails.css";
-import { useEffect, useState } from "react";
+import { useState } from "react"
 
 const MovesDetails = () => {
+  const GetDetails = (clicked, pokemonState) => {
 
-  const GetDetails = (clicked, updateListDetails) => {
+    let allListDetails = null
 
-        let moveAccuracy = "";
-        let movePower = "";
-        let movePP = "";
+    const fetchID = () => {
+      const id = clicked;
+      fetch(`https://pokeapi.co/api/v2/move/${id}`)
+        .then((response) => response.json())
+        .then((response) => {
+          allListDetails = 
+            <>  
+                <h2 className="selected-move">{response.name.charAt(0).toUpperCase() + response.name.slice(1)}</h2>
+                <div className="info-row">
+                    <p className="key-title">Move Accuracy:</p> 
+                    <p className="key-value">{response.accuracy ? response.accuracy:"N/A"}</p>
+                </div>
+                <div className="info-row">
+                    <p className="key-title">Move Power:</p> 
+                    <p className="key-value">{response.power ? response.power:"N/A"}</p>
+                </div>
+                <div className="info-row">
+                    <p className="key-title">Move PP:</p> 
+                    <p className="key-value">{response.pp ? response.pp:"N/A"}</p>
+                </div>
+            </>
+        
+        })
+        .catch(console.error);
+    };
 
-      const fetchID = () => {
-        const id = clicked;
-        fetch(`https://pokeapi.co/api/v2/move/${id}`)
-          .then((response) => response.json())
-          .then((response) => {
-            console.log("setMoveId", response);
-          moveAccuracy = (response.accuracy);
-          movePower = (response.power);
-          movePP = (response.pp)
-          })
-          .catch(console.error);
-      };
+    fetchID();
 
-        fetchID();
- 
-        setTimeout(() => {
-          console.log("clicked", clicked)
-            updateListDetails([moveAccuracy + "/" + movePower + "/" +  movePP])
-        }, 500)
-
+    setTimeout(() => {
+      pokemonState[2](allListDetails)
+    }, 500);
   };
   return { GetDetails };
 };

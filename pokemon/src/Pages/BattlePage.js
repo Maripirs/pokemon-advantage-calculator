@@ -2,6 +2,8 @@ import Card from "../Components/Card";
 import Results from "../Components/Results";
 import "./BattlePage.css";
 import { useState, useEffect } from "react"
+import MovesDetails from "../Components/MovesDetails";
+import Moves from "../Components/Moves";
 
 const BattlePage = () => {
     //Setting use state for pokemon 1 and 2
@@ -17,18 +19,31 @@ const BattlePage = () => {
     {
       pokemonObject: null,
       pokemonMovesTypes: [null, null, null, null]
+    },
+    {
+      details: null
     }
   ]
 
 
   const [pokemonInBattle, setPokemonInBattle] = useState(initialState)
+
   const updatePokemonMoveTypes = (pokemonInd, moveToAdd, moveInd) =>{
     let newPokemonInBattle = [...pokemonInBattle]
     newPokemonInBattle[pokemonInd].pokemonMovesTypes[moveInd] = moveToAdd
     setPokemonInBattle(newPokemonInBattle)
   }
+
+  const updateDetails = (allInfo) =>{
+    let newPokemonInBattle = [...pokemonInBattle]
+    newPokemonInBattle[2].details = allInfo
+    setPokemonInBattle(newPokemonInBattle)
+  }
   
-  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes]
+  const pokemonState = [pokemonInBattle, updatePokemonMoveTypes, updateDetails]
+
+
+ 
 
   
   //Calculating 2 random ID for the first 151 pokemon
@@ -40,7 +55,7 @@ const BattlePage = () => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id1}`)
     .then((response) => response.json())
     .then((response) => {
-      console.log("res JSON", response);
+      // console.log("res JSON", response);
       setPokemon1(response);
       let newPokemonInBattle = [...pokemonInBattle]
       newPokemonInBattle[0].pokemonObject = response
@@ -54,7 +69,7 @@ const BattlePage = () => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id2}`)
       .then((response) => response.json())
       .then((response) => {
-        console.log("res JSON", response);
+        // console.log("res JSON", response);
         setPokemon2(response);
         let newPokemonInBattle = [...pokemonInBattle]
         newPokemonInBattle[1].pokemonObject = response
@@ -81,6 +96,10 @@ const resultsDiv = Results(pokemonInBattle)
         <h3>VS.</h3>
         {card2}
       </div>
+      <div className ="details">
+        {pokemonInBattle[2].details}
+      </div>
+
       {resultsDiv}
     </>
   );
