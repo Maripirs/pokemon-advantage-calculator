@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const MovesDetails = () => {
 
-  const GetDetails = (clicked, updateSomething) => {
+  const GetDetails = (clicked, updateListDetails) => {
 
         let moveAccuracy = "";
         let movePower = "";
@@ -27,16 +27,9 @@ const MovesDetails = () => {
  
         setTimeout(() => {
           console.log("clicked", clicked)
-            updateSomething([moveAccuracy + ", " + movePP + ", " + movePower])
+            updateListDetails([moveAccuracy + "/" + movePower + "/" +  movePP])
         }, 500)
-    //   return (
-    //     <>
-    //   <p>{moveAccuracy}</p>
-    //   <p>{movePower}</p>
-    //   <p>{movePP}</p>
-    //   <p>"We passed"</p>
-    //     </>
-    //   );
+
   };
   return { GetDetails };
 };

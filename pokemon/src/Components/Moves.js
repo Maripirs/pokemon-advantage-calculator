@@ -60,19 +60,18 @@ const Moves = (pokemon, pokemonState, index) => {
 
 
 const [clicked, setClicked] = useState(false)
-const [something, setSomething] = useState(null)
+const [listDetails, setListDetails] = useState(null)
 const { GetDetails } = MovesDetails()
 
 
-const updateSomething = (details) => {
-    let newSomething = details
-    setSomething(newSomething)
-
+const updateListDetails = (details) => {
+    let newDetails = details
+    setListDetails(newDetails)
 }
 
 const handleClick = (e) => {
   setClicked(true)
-  GetDetails(e.target.id, updateSomething)
+  GetDetails(e.target.id, updateListDetails)
 }
 
 
@@ -120,18 +119,40 @@ const handleClick = (e) => {
   };
 
   const [allMoves, setAllMoves] = useState("");
+  
+  const allDetailsFunction = () => {
+    return (
+      <>
+      <div> 
+        {listDetails ? listDetails[0] : "Loading stats..."}
+      </div>
+      <div> 
+        {listDetails ? listDetails[1] : "Loading stats..."}
+      </div>
+      <div> 
+        {listDetails ? listDetails[2] : "Loading stats..."}
+      </div>
+    </>
+  )
+}
 
+const [allDetails, setAllDetails] = useState("");
+
+useEffect(() =>{
+  // console.log("function", listDetails)
+  if(listDetails){
+    setAllDetails(allDetailsFunction());
+  }
+}, [listDetails]);
 
 
 
   useEffect(() => {
-    console.log("function", pokemonMoves);
+    // console.log("function", pokemonMoves);
     if (pokemonMoves) {
       setAllMoves(allMovesFunction());
     }
   }, [pokemonMoves]);
-
-
 
 
 
@@ -142,10 +163,12 @@ const handleClick = (e) => {
       {allMoves}
     </div>
     
+    <div>
+      <p>Accuracy/Power/PP:</p>
+    </div>
+
     <div className="moves-details"> 
-    {something ? something[0] : "hello.."}
-    {something ? something[1] : "hello.."}
-    {something ? something[2] : "hello.."}
+      {allDetails}
     </div>  
   </>
   
