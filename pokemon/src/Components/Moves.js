@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import BattlePage from "../Pages/BattlePage";
 import "./Moves.css";
+import MovesDetails from "./MovesDetails";
 
 const Moves = (pokemon, pokemonState, index) => {
 
@@ -42,12 +43,11 @@ const Moves = (pokemon, pokemonState, index) => {
       //delays setting newPokemonMoves to setPokemonMoves to let data generate
       setTimeout(() => {
         setPokemonMoves(newPokemonMoves);
-        console.log("pokemonstate0", pokemonState[0])
-      }, 500);
-      return newPokemonMoves;
+        console.log("newpokemonMoves", newPokemonMoves)
+        console.log("pokemonmoves", pokemonMoves)
+      }, 1000);
     } else {
       console.log("loading");
-      return [];
     }
   }
 
@@ -59,27 +59,21 @@ const Moves = (pokemon, pokemonState, index) => {
 
 
 
+const [clicked, setClicked] = useState(false)
+const [something, setSomething] = useState(null)
+const { GetDetails } = MovesDetails()
 
 
+const updateSomething = (details) => {
+    let newSomething = details
+    setSomething(newSomething)
 
-// const [allPokemonMoves, setAllPokemonMoves] = useState([])
+}
 
-// const arr = () => {
-//   setAllPokemonMoves(pokemonMoves)
-//   console.log("pokemonMoves", allPokemonMoves[0])
-// }
-
-// useEffect(() => {
-//   arr()
-// }, [])
-
-
-
-
-
-
-
-
+const handleClick = (e) => {
+  setClicked(true)
+  GetDetails(e.target.id, updateSomething)
+}
 
 
   const allMovesFunction = () => {
@@ -87,7 +81,7 @@ const Moves = (pokemon, pokemonState, index) => {
       <>
         <div className="moveLine">
           {pokemonMoves[0] ? (
-            <p>
+            <p onClick={handleClick} id={pokemonMoves[0].moveID}>
               {pokemonMoves[0].moveName.charAt(0).toUpperCase() + pokemonMoves[0].moveName.slice(1)}, {pokemonMoves[0].moveType.charAt(0).toUpperCase() + pokemonMoves[0].moveType.slice(1)}
             </p>
           ) : (
@@ -96,8 +90,8 @@ const Moves = (pokemon, pokemonState, index) => {
         </div>
         <div className="moveLine">
           {pokemonMoves[1] ? (
-            <p>
-              {pokemonMoves[1].moveName.charAt(1).toUpperCase() + pokemonMoves[1].moveName.slice(1)}, {pokemonMoves[1].moveType.charAt(0).toUpperCase() + pokemonMoves[1].moveType.slice(1)}
+            <p onClick={handleClick} id={pokemonMoves[1].moveID}>
+              {pokemonMoves[1].moveName.charAt(0).toUpperCase() + pokemonMoves[1].moveName.slice(1)}, {pokemonMoves[1].moveType.charAt(0).toUpperCase() + pokemonMoves[1].moveType.slice(1)}
             </p>
           ) : (
             "loading..."
@@ -105,7 +99,7 @@ const Moves = (pokemon, pokemonState, index) => {
         </div>
         <div className="moveLine">
           {pokemonMoves[2] ? (
-            <p>
+            <p onClick={handleClick} id={pokemonMoves[2].moveID}>
               {pokemonMoves[2].moveName.charAt(0).toUpperCase() + pokemonMoves[2].moveName.slice(1)}, {pokemonMoves[2].moveType.charAt(0).toUpperCase() + pokemonMoves[2].moveType.slice(1)}
             </p>
           ) : (
@@ -114,7 +108,7 @@ const Moves = (pokemon, pokemonState, index) => {
         </div>
         <div className="moveLine">
           {pokemonMoves[3] ? (
-            <p>
+            <p onClick={handleClick} id={pokemonMoves[3].moveID}>
               {pokemonMoves[3].moveName.charAt(0).toUpperCase() + pokemonMoves[3].moveName.slice(1)}, {pokemonMoves[3].moveType.charAt(0).toUpperCase() + pokemonMoves[3].moveType.slice(1)}
             </p>
           ) : (
@@ -143,9 +137,19 @@ const Moves = (pokemon, pokemonState, index) => {
 
 
   return (
-  <div className="moves-container">
-    {allMoves}
-  </div>)
+  <>
+    <div className="moves-container">
+      {allMoves}
+    </div>
+    
+    <div className="moves-details"> 
+    {something ? something[0] : "hello.."}
+    {something ? something[1] : "hello.."}
+    {something ? something[2] : "hello.."}
+    </div>  
+  </>
+  
+  )
 };
 
 export default Moves;
