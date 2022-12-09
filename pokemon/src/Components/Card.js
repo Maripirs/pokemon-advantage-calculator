@@ -19,6 +19,7 @@ const Card = (pokemon, pokemonState, index) => {
   }, [pokemon])
 
   return (
+    <div className="card-score">
     <div className="cards-container" style={
       {
         background: `
@@ -26,8 +27,8 @@ const Card = (pokemon, pokemonState, index) => {
         linear-gradient(to right, ${colors[0]} 50%, ${colors[1]} 50%) border-box
         `,
       color: `#313149`,
-      padding: `10px`,
-      border: `10px solid transparent`,
+      padding: `1vh`,
+      border: `1vh solid transparent`,
       borderRadius:`2vh`
       }}>
       <div className="card-top">
@@ -66,6 +67,11 @@ const Card = (pokemon, pokemonState, index) => {
           )}
       </div>
       <Moves pokemon={pokemon} pokemonState ={pokemonState} index = {index}/>
+    </div>
+    
+    <div className= 'pokemon-score'>
+      <h3 className= 'score-text'>Score : {pokemonState.pokemonInBattle[index].pokemonScore}</h3>
+    </div>
     </div>
   );
 };

@@ -17,7 +17,7 @@
     box-sizing: border-box;
 }
 .info-row{
-    width: 150px;
+    width: 300px;
     display: flex;
     justify-content: space-between;
 }

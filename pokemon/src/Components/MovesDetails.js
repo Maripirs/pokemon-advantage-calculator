@@ -6,7 +6,7 @@ const MovesDetails = () => {
   const GetDetails = (clicked, pokemonState) => {
 
     let allListDetails = null
-    pokemonState[2]('loading')
+    pokemonState.updateDetails('loading')
     const fetchID = () => {
       const id = clicked;
       fetch(`https://pokeapi.co/api/v2/move/${id}`)
@@ -29,7 +29,7 @@ const MovesDetails = () => {
                     <p className="key-value">{response.pp ? response.pp:"N/A"}</p>
                 </div>
             </div>
-          pokemonState[2](allListDetails)
+          pokemonState.updateDetails(allListDetails)
                 
         })
         .catch(console.error);

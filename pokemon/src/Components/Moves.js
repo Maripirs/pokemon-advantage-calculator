@@ -22,7 +22,7 @@ const Moves = (props) => {
               moveType: response.type.name,
               moveID: response.id,
             };
-            props.pokemonState[1](props.index, response.type.name, i);
+            props.pokemonState.updatePokemonMoveTypes(props.index, response.type.name, i);
           })
           .catch(console.error);
         }

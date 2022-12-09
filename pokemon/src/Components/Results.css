@@ -5,3 +5,34 @@ button{
     border-radius: 1.5vh;
     font-size: 2vh;
 }
+.winner-img-div{
+    overflow: visible;
+    height:17vh;
+    width:17vh;
+    background-size: cover;
+    background-position: center;
+    animation: 1s linear 0s infinite alternate jump
+}
+.text-result{
+    text-shadow: -1px 1px 0 #000,
+                  1px 1px 0 #000,
+                  1px -1px 0 #000,
+                 -1px -1px 0 #000;
+    letter-spacing: .2em;
+}
+
+@keyframes jump {
+    0%{
+        transform: translateX(-2vh) translateY(2vh)
+    }
+    40%{
+        transform: translateX(-.4vh) translateY(-2vh);
+    }
+    60%{
+        transform: translateX(.4vh) translateY(-2vh);
+
+    }
+    100%{
+        transform: translateX(2vh) translateY(2vh)
+    }
+}
