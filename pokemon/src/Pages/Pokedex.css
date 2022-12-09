@@ -22,6 +22,8 @@
     flex-direction: column;
     margin: 1vw;
     border-radius: 5%;
+    border: solid 5px;
+    background-size: cover;
 }
 
 
@@ -64,4 +66,11 @@ body {
     font-family: 'Press Start 2P';
     font-size: 0.6em;
     margin: 1%;
+}
+
+.pokedex-text-box {
+    background-color: rgba(237, 237, 237, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
 }

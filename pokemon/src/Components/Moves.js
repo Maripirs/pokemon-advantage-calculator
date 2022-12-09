@@ -28,7 +28,7 @@ const Moves = (props) => {
         }
         setTimeout(()=>{
           setPokemonMoves(newPokemonMoves)
-        }, 500)
+        }, 900)
 
   }
 

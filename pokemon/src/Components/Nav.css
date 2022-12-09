@@ -1,0 +1,17 @@
+.nav-container{
+    display: flex;
+    text-decoration: none;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 20px;
+    background-color: white;
+    height: 40%;
+}
+.link{
+    text-decoration: none;
+    color: black
+}
+
+a:hover{
+    text-shadow: 4px 4px 10px black;
+}

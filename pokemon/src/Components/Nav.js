@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import BattlePage from "../Pages/BattlePage";
 import PokeDex from "../Pages/Pokedex";
-import "../App.css"
+import "./Nav.css"
 
 const Nav = (props) => {
     return(
