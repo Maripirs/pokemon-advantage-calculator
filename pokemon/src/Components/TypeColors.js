@@ -7,7 +7,7 @@ const TypeColors = {
     rock: '#B9A235',
     bug: '#A9B91B',
     ghost: '#71579A',
-    steel: '#FEFEFF',
+    steel: '#B8B8D0',
     fire: '#F0812C',
     water: '#6891F1',
     grass: '#78CA4F',

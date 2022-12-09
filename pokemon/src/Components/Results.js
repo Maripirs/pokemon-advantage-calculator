@@ -5,7 +5,7 @@ import "./Results.css"
 const Results = (pokemonInBattle) => {
     let pokemon1Score = 0
     let pokemon2Score = 0
-
+    // console.log(pokemonInBattle)
     const [pokemonTypes, setPokemonTypes] = useState([[],[]])
     const [pokemonScores, setPokemonScores] = useState(null)
     //Might be usefull if we have async problems. Lets us know if we have all the information we need to proceed with calculations
@@ -17,6 +17,7 @@ const Results = (pokemonInBattle) => {
     //Nothe that some pokemon have dual types
     let fetchPokemonTypes = () =>{
         if(pokemonInBattle[0].pokemonObject && pokemonInBattle[1].pokemonObject){
+            console.log('fetching pokemon types')
             let newPokemonTypes = [...pokemonTypes]
             for (let i = 0; i < 2 ; i++){   
                 for (let j = 0; j < pokemonInBattle[i].pokemonObject.types.length; j++){
@@ -35,11 +36,11 @@ const Results = (pokemonInBattle) => {
     //Unsure if timeout is needed
     //fetching pokemon types only when pokemonInBattle value is updated
     useEffect(() =>{
-        setTimeout(()=>{
-            if(pokemonInBattle[0].pokemonObject && pokemonInBattle[1].pokemonObject){
-                fetchPokemonTypes()
+        if(pokemonInBattle[0].pokemonObject && pokemonInBattle[1].pokemonObject){
+            fetchPokemonTypes()
 
-            }
+        }
+        setTimeout(()=>{
 
         }, 200)
     }, [pokemonInBattle])
@@ -100,9 +101,9 @@ const Results = (pokemonInBattle) => {
 
     const calculateAdvantage = () =>{
         if (pokemon1Score > pokemon2Score){
-            return `${pokemonInBattle[0].pokemonObject.name} is at a type advantage`
+            return `${pokemonInBattle[0].pokemonObject.name.charAt(0).toUpperCase() + pokemonInBattle[0].pokemonObject.name.slice(1)} is at a type advantage`
         }else if (pokemon1Score < pokemon2Score){
-            return `${pokemonInBattle[1].pokemonObject.name} is at a type advantage`
+            return `${pokemonInBattle[1].pokemonObject.name.charAt(0).toUpperCase() + pokemonInBattle[1].pokemonObject.name.slice(1)} is at a type advantage`
         } else{
             return `No pokemon has a type advantage`
         }
@@ -124,21 +125,16 @@ const Results = (pokemonInBattle) => {
 
     if(buttonClicked){
         return(
-            <div className="results-container">
-                {/* <div>
-                    <h3>Results will be here. We are working for you</h3>
-                    <h1>🚧</h1>
-                </div> */}
-                <h3>{pokemonInBattle[0].pokemonObject.name} score is = {pokemonScores[0]}</h3>
-                <h3>{pokemonInBattle[1].pokemonObject.name} score is = {pokemonScores[1]}</h3>
-                <h1>{resultText}</h1>
-            </div>
+                <>
+                    <h3>{pokemonInBattle[0].pokemonObject.name.charAt(0).toUpperCase() + pokemonInBattle[0].pokemonObject.name.slice(1)} score is = {pokemonScores[0]}</h3>
+                    <h3>{pokemonInBattle[1].pokemonObject.name.charAt(0).toUpperCase() + pokemonInBattle[1].pokemonObject.name.slice(1)} score is = {pokemonScores[1]}</h3>
+                    <h1>{resultText}</h1>
+                </>
         )
     } else{    
         return(
-            <div className="results-container">
                 <button onClick={RevealResults} >Reveal Results</button>
-             </div>
+
         )
     }
 }

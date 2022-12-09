@@ -93,11 +93,12 @@ const resultsDiv = Results(pokemonInBattle)
         <h3>VS.</h3>
         {card2}
       </div>
-      <div className="details"> 
+      <div className="details-container"> 
         {pokemonInBattle[2].details}
       </div>
-
+      <div className='results-container'>
       {resultsDiv}
+      </div>
 
     </>
   )

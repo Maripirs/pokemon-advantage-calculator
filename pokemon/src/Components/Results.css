@@ -1,10 +1,7 @@
-.results-container{
-    width: 60vw;
-    height: 30vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: Green;
-    flex-direction: column;
-    color: white
+button{
+    width:50%;
+    height: 20%;
+    border: .5vh solid rgb(146, 138, 138);
+    border-radius: 1.5vh;
+    font-size: 2vh;
 }

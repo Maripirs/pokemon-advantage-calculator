@@ -2,14 +2,17 @@
 
 .cards-container{
     height: 38vh;
-    width: 30vh;
-    background-color: rgb(175, 208, 175);
+    width: 20vh;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
-    border-radius: 1.5vh;
+    box-shadow: -.5vh .5vh 0 #000,
+    .5vh .5vh 0 #000,
+   .5vh -.5vh 0 #000,
+  -.5vh -.5vh 0 #000;;
 }
+
 
 .card-top{
     height: 10%;
@@ -19,8 +22,6 @@
     flex-wrap: wrap;
     padding-top: 15px;
 }
-
-
 
 
 .img-container{

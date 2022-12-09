@@ -11,14 +11,11 @@
 }
 
 .move-name{
-    background-color:#BEA9DF;
-    border-radius: 10px;
-    border: solid 2px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-size: 14px;
     width: 40%;
     font-weight: bold;
 }

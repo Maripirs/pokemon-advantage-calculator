@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
-import BattlePage from "../Pages/BattlePage";
 import "./Moves.css";
 import MovesDetails from "./MovesDetails";
+import TypeColors from "./TypeColors";
 
-const Moves = (pokemon, pokemonState, index) => {
+const Moves = (props) => {
   const [pokemonMoves, setPokemonMoves] = useState([]);
 
   function getMoves() {
-    if (pokemon) {
       let newPokemonMoves = [...pokemonMoves];
-
       for (let i = 0; i < 4; i++) {
         const randomMoveIndex = Math.floor(
-          Math.random() * pokemon.moves.length
-        );
+          Math.random() * props.pokemon.moves.length
+          );
 
-        let movesURL = pokemon.moves[randomMoveIndex].move.url;
-        fetch(movesURL)
+          let movesURL = props.pokemon.moves[randomMoveIndex].move.url;
+          fetch(movesURL)
           .then((response) => response.json())
           .then((response) => {
             newPokemonMoves[i] = {
@@ -24,31 +22,27 @@ const Moves = (pokemon, pokemonState, index) => {
               moveType: response.type.name,
               moveID: response.id,
             };
-            pokemonState[1](index, response.type.name, i);
+            props.pokemonState[1](props.index, response.type.name, i);
           })
           .catch(console.error);
-      }
+        }
+        setTimeout(()=>{
+          setPokemonMoves(newPokemonMoves)
+        }, 500)
 
-      setTimeout(() => {
-        setPokemonMoves(newPokemonMoves);
-      }, 1000);
-    } else {
-      console.log("loading");
-    }
   }
 
   useEffect(() => {
-    getMoves();
-  }, [pokemon]);
+    if (props.pokemon && props.pokemon){
+      getMoves();
+    }
+  }, [props.pokemon]);
 
-  const [clicked, setClicked] = useState(false);
 
   const { GetDetails } = MovesDetails();
 
   const handleClick = (e) => {
-    console.log(e.target.closest(".move-row"))
-    setClicked(true);
-    GetDetails(e.target.closest(".move-row").id, pokemonState);
+    GetDetails(e.target.closest(".move-row").id, props.pokemonState);
   };
 
   const allMovesFunction = () => {
@@ -60,7 +54,7 @@ const Moves = (pokemon, pokemonState, index) => {
             {pokemonMoves[i].moveName.charAt(0).toUpperCase() +
               pokemonMoves[i].moveName.slice(1)}
           </div>
-          <div className="type">
+          <div className="type" style={{backgroundColor: `${TypeColors[pokemonMoves[i].moveType]}`}} >
             {pokemonMoves[i].moveType.charAt(0).toUpperCase() +
               pokemonMoves[i].moveType.slice(1)}
           </div>

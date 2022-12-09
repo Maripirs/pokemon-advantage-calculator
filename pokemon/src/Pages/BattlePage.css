@@ -1,7 +1,7 @@
 body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
 }
 
@@ -9,7 +9,21 @@ body{
     display: flex;
     flex-direction: row;
     width: 60vw;
-    height: 50vh;
+    min-width: 50vh;
+    height: 40vh;
     justify-content: space-between;
     align-items: center;
+}
+.details-container{
+    height: 20vh;
+    width: 60vw;
+    display: flex;
+}
+.results-container{
+    width: 60vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
