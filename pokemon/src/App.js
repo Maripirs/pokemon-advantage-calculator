@@ -2,6 +2,8 @@ import './App.css';
 import BattlePage from './Pages/BattlePage';
 import { Routes, Route } from 'react-router-dom';
 import Nav from './Components/Nav';
+import Main from './Pages/Main';
+import PokeDex from './Pages/Pokedex';
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/battlepage" element={<BattlePage/>} />
+          <Route path="/" element={<Main/>}/>
+          <Route path="/battlepage/" element={<BattlePage/>} />
+          <Route path="/pokedex/" element={<PokeDex/>} />
         </Routes>
         
       </main>
