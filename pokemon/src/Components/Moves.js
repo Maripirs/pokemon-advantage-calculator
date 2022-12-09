@@ -5,7 +5,7 @@ import TypeColors from "./TypeColors";
 
 const Moves = (props) => {
   const [pokemonMoves, setPokemonMoves] = useState([]);
-
+  //fetches 4 random moves from the options that the pokemon has
   function getMoves() {
       let newPokemonMoves = [...pokemonMoves];
       for (let i = 0; i < 4; i++) {
@@ -22,10 +22,12 @@ const Moves = (props) => {
               moveType: response.type.name,
               moveID: response.id,
             };
+            //Seting these moves in the general page state
             props.pokemonState.updatePokemonMoveTypes(props.index, response.type.name, i);
           })
           .catch(console.error);
         }
+        //just waiting for some things to fetch
         setTimeout(()=>{
           setPokemonMoves(newPokemonMoves)
         }, 900)
@@ -41,6 +43,7 @@ const Moves = (props) => {
 
   const { GetDetails } = MovesDetails();
 
+  //Calling a function inside of the MovesDetails component to display details about the clicked move
   const handleClick = (e) => {
     GetDetails(e.target.closest(".move-row").id, props.pokemonState);
   };

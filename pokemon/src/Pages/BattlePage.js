@@ -9,7 +9,7 @@ const BattlePage = () => {
   const [pokemon1, setPokemon1] = useState(null);
   const [pokemon2, setPokemon2] = useState(null);
 
-    //set initialState for 2 empty pokemon 
+    //set initialState for 2 empty pokemon
   const initialState = [
     {
       pokemonObject: null, //Pokemon Obj
@@ -31,6 +31,7 @@ const BattlePage = () => {
 
   const [pokemonInBattle, setPokemonInBattle] = useState(initialState)
 
+  ///Functions to update the state of the battlepage 
   const updatePokemonMoveTypes = (pokemonInd, moveToAdd, moveInd) =>{
     let newPokemonInBattle = [...pokemonInBattle]
     newPokemonInBattle[pokemonInd].pokemonMovesTypes[moveInd] = moveToAdd
@@ -55,7 +56,8 @@ const BattlePage = () => {
     setPokemonInBattle(newPokemonInBattle)
   }
   
-  
+  /// Object that contains the current state and functions to modify it
+  //Used to pass information between components
   const pokemonState = {
     pokemonInBattle: pokemonInBattle,
     updatePokemonMoveTypes: updatePokemonMoveTypes,
