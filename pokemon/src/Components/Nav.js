@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
-
+import BattlePage from "../Pages/BattlePage";
+import PokeDex from "../Pages/Pokedex";
+import "../App.css"
 
 const Nav = (props) => {
     return(
-        <Link className="link" to="/battlepage">Battle Page</Link>
-
-    )
+        <div className="nav-container">
+            <Link className="link" to="/battlepage"><p>Battle Page</p></Link>
+            <Link className="link" to="/pokedex"><p>PokeDex</p></Link>
+        </div>
+    )  
 }
 
 export default Nav;
