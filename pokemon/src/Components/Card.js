@@ -2,6 +2,7 @@ import Moves from "./Moves";
 import "./Card.css";
 import TypeColors from "./TypeColors"
 import { useState , useEffect } from "react";
+import TypeImg from "./TypeImg";
 
 const Card = (pokemon, pokemonState, index) => {
   const [colors, setColors] = useState(['red', 'blue'])
@@ -57,7 +58,7 @@ const Card = (pokemon, pokemonState, index) => {
         </div>
       </div>
 
-      <div className="img-container">
+      <div className="img-container" style = {pokemon ? {backgroundImage:`url(${TypeImg[pokemon.types[0].type.name]})`}: {backgroundImage:`url(${TypeImg.normal})`}}>
           {pokemon ? (
             <img className="pokemon-img" src={pokemon.sprites.front_default} />
           ) : (

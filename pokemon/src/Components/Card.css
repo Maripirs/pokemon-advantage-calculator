@@ -2,7 +2,7 @@
 
 .cards-container{
     height: 38vh;
-    width: 20vh;
+    width: 25vh;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -28,8 +28,10 @@
     height: 40%;
     width: 90%;
     background-color: rgb(226, 202, 43);
+    background-size: cover;
     display: flex;
     justify-content: center;
+    border: .5vh solid rgb(129, 129, 129);
 }
 
 .moves-container{
