@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
-import { json, Link } from "react-router-dom";
-import BattlePage from "./BattlePage";
 import "./Pokedex.css";
 import TypeColors from "../Components/TypeColors";
 import TypeImg from "../Components/TypeImg";
+
 
 const PokeDex = (props) => {
   const [poke, setPoke] = useState([]);
   const pokeData = [];
 
+  //Function that fetches the Pokemon at each 151 URL's
   async function fetchPokemon() {
+
+  //At each URL fetched, push it into a JSON.
     for (let i = 1; i <= 151; i++) {
       const pokeurl = `https://pokeapi.co/api/v2/pokemon/${i}`;
       pokeData.push(fetch(pokeurl).then((response) => response.json()));
     }
+
+  //Wait for all data to be fetched then map through data and store in object.
     Promise.all(pokeData).then((data) => {
       const pokemon = data.map((pokeData) => ({
         name: pokeData.name,
