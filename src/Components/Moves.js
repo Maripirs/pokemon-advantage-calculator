@@ -63,7 +63,9 @@ const Moves = (props) => {
           </div>
         </div>
       ) : (
-        "loading..."
+        <>
+          {(i===2) ? 'loading' : ''}
+        </>
       );
     }
 

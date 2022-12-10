@@ -34,8 +34,7 @@
     width: 90%;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    padding-top: 15px;
+    align-items: center;
 }
 
 
@@ -96,7 +95,8 @@
 
 .type-container .type{
     padding: 0 1em;
-    margin-left: 1em;
+    margin-left: .5em;
+    font-size: 8px;
 }
 
 .type-container{

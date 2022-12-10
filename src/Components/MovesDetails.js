@@ -6,7 +6,8 @@ const MovesDetails = () => {
   const GetDetails = (clicked, pokemonState) => {
 
     let allListDetails = null
-    pokemonState.updateDetails('loading')
+    pokemonState.updateDetails(<p>loading...</p>)
+    debugger
     const fetchID = () => {
       const id = clicked;
       fetch(`https://pokeapi.co/api/v2/move/${id}`)
