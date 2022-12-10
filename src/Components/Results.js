@@ -148,12 +148,16 @@ const Results = (pokemonInBattle, pokemonState) => {
     return (
       <>
         {pokemonInBattle[2].pokemonAtAdvantage ? (
+          <div className='winner-div'>
+            <img className='sparkles1' src='https://i.pinimg.com/originals/68/8e/9e/688e9eb45c2f5cc82361d5c305ccc0ca.gif'/>
           <div
             className="winner-img-div"
             style={{
               backgroundImage: `url( ${pokemonInBattle[2].pokemonAtAdvantage.sprites.front_default})`,
             }}
           ></div>
+          <img className='sparkles2' src='https://i.pinimg.com/originals/68/8e/9e/688e9eb45c2f5cc82361d5c305ccc0ca.gif'/>
+          </div>
         ) : (
           <></>
         )}
