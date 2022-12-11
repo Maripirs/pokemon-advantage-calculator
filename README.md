@@ -8,7 +8,7 @@
 
 
 <h3>Technologies Used<h3>
-<p>https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB<p>
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
 
 
 <h3>Getting Started<h3>
