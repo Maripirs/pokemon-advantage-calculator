@@ -11,7 +11,7 @@ The Battle Page provides 2 Pokémon (original 151) at random and compares them i
 <br>
 The PokeDex provides all names, ID, and types of the original 151 Pokémon included in the calculator.
 
-All Pokémon information is provided by PokéAPI: https://pokeapi.co/
+All Pokémon information is provided by PokéAPI: https://pokeapi.co/ <br><br>
 
 ## 🖼️ Wireframe 🖼️
 ##### Main Page
@@ -24,25 +24,33 @@ All Pokémon information is provided by PokéAPI: https://pokeapi.co/
 
 ##### PokeDex
 ###### PokeDex page, where the user can see the 151 different Pokémon and their types.
-<img width="auto" height="500" src="https://user-images.githubusercontent.com/112284075/206890533-05e76688-423b-4604-b453-7ce688016c64.png" alt="pokedex">
+<img width="auto" height="500" src="https://user-images.githubusercontent.com/112284075/206890533-05e76688-423b-4604-b453-7ce688016c64.png" alt="pokedex"> <br><br>
 
 ## 🚀 Technologies Used 🚀
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
 <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=whit">
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><br><br>
 
 ## 🤔 Why a Pokemon Advantage Calculator? 🤔
-Project 2 challenged us to create an interactive React application that included data from a third-party API, with 4 different components used. We thought it was a good opportunity to practice our skills using a straight forward API, so why not make a game out of the API data?<br>
-<br>
+Project 2 challenged us to create an interactive React application that included data from a third-party API, with 4 different components used. We thought it was a good opportunity to practice our skills using a straight forward API, so why not make a game out of the API data?<br><br>
+
 🙌 We were able use the API to 🙌:<br>
-<br>
+
 ✅Create an advantage calculator<br>
 ✅Style our app depending on API data<br>
 ✅Map through data to display information and imagery<br>
-✅Sharpen our React and API skills
+✅Sharpen our React and API skills<br><br>
 
-## Thank you for reading!
-<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
-[Maripi's LinkedIn](https://www.linkedin.com/in/maripirs/)
-[David's LinkedIn](https://www.linkedin.com/in/iamdavidhanlee/)
+## 🙏 Thank you for reading!🙏
+<p>
+  <a href="https://www.linkedin.com/in/maripirs/" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> Maripi's LinkedIn
+  </a>
+<p>
+<p>
+  <a href="https://www.linkedin.com/in/iamdavidhanlee" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> David's LinkedIn
+  </a>
+<p>
+
