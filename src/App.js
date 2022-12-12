@@ -22,6 +22,12 @@ function App() {
           <Route path="/pokedex/" element={<PokeDex />} />
         </Routes>
       </main>
+      <footer>
+            <p>No copyright infringement intended. This site may contain content not authorized use by it's owner.</p>
+            <p>All data and imagery provided by <a href="https://pokeapi.co/">PokeAPI</a> and <a href="https://www.deviantart.com/phoenixoflight92">PhoenixOfLight92 Deviant Art</a>
+            </p>
+        </footer>
+      
     </div>
   );
 }
