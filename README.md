@@ -49,8 +49,9 @@ Here are a few stretch goals we look to accomplish in the future:<br>
 📄 Include how the different Pokémon types compare to each other<br>
 📄 Ability to choose which specific Pokémon is compared<br>
 📄 Let the user choose which moves the Pokémon have<br>
+📄 Giving the app a responsive design<br>
 <br>
-## 🙏 Thank you for reading!🙏
+## 🙏 Thank you for reading! 🙏
 <p>
   <a href="https://www.linkedin.com/in/maripirs/" rel="nofollow noreferrer">
     <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> Maripi's LinkedIn
