@@ -55,7 +55,7 @@ const Results = (pokemonInBattle, pokemonState) => {
           pokemonTypes[def][i].damage_relations.double_damage_from.some(
             (e) => e.name === pokemonInBattle[att].pokemonMovesTypes[j]
           )
-        ) {
+        ){
           modifiers[i] = 2;
           //If the pokemon we are attacking recieves half damage from this move type, set modifier to 0.5
         } else if (
