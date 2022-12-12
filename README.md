@@ -11,7 +11,8 @@ The Battle Page provides 2 Pokémon (original 151) at random and compares them i
 <br>
 The PokeDex provides all names, ID, and types of the original 151 Pokémon included in the calculator.
 
-All Pokémon information is provided by PokéAPI: https://pokeapi.co/ <br><br>
+All Pokémon information and imagery is provided by PokéAPI: https://pokeapi.co/ and https://www.deviantart.com/phoenixoflight92
+<br><br>
 
 ## 🖼️ Wireframe 🖼️
 ##### Main Page
