@@ -1,8 +1,8 @@
 <img width="auto" src="https://user-images.githubusercontent.com/112284075/206890248-d9256769-9996-4bb2-af7a-2478a75c3843.png" alt="coverpage">
 
-# 👾 GA Project 2 - Pokemon Advantage Calculator 👾
+# 👾 GA Project 2 - Pokémon Advantage Calculator 👾
 ##### By Maripi Bartosch and David Lee
-###### Link here
+###### [Pokémon Advantage Calculator](https://davipi.netlify.app/)
 
 ## ⭐ Getting Started ⭐
 Welcome to the Pokémon Advantage Calculator! User's can navigate to the Battle Page or the PokeDex. <br>
