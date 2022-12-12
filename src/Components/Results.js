@@ -42,32 +42,32 @@ const Results = (pokemonInBattle, pokemonState) => {
     setTimeout(() => {}, 200);
   }, [pokemonInBattle]);
 
-  const calculatePokemon1Score = () => {
-    pokemon1Score = 0;
+  const calculatePokemonScore = (att, def) => {
+    let pokemonScore = 0;
     //Looping 4 times, one for each move
     for (let j = 0; j < 4; j++) {
       //setting up modifiers in case pokemon has dual type. In which case each move will be calculated twice and then multiplied. both start with a default value of 1
       let modifiers = [1, 1];
       //looping once per type in the pokemon (most cases will only run once)
-      for (let i = 0; i < pokemonTypes[1].length; i++) {
+      for (let i = 0; i < pokemonTypes[def].length; i++) {
         //If the pokemon we are attacking recieves double damage from this move type, set modifier to 2
         if (
-          pokemonTypes[1][i].damage_relations.double_damage_from.some(
-            (e) => e.name === pokemonInBattle[0].pokemonMovesTypes[j]
+          pokemonTypes[def][i].damage_relations.double_damage_from.some(
+            (e) => e.name === pokemonInBattle[att].pokemonMovesTypes[j]
           )
         ) {
           modifiers[i] = 2;
           //If the pokemon we are attacking recieves half damage from this move type, set modifier to 0.5
         } else if (
-          pokemonTypes[1][i].damage_relations.half_damage_from.some(
-            (e) => e.name === pokemonInBattle[0].pokemonMovesTypes[j]
+          pokemonTypes[def][i].damage_relations.half_damage_from.some(
+            (e) => e.name === pokemonInBattle[att].pokemonMovesTypes[j]
           )
         ) {
           modifiers[i] = 0.5;
           //If the pokemon we are attacking recieves no damage from this move type, set modifier to 0
         } else if (
-          pokemonTypes[1][i].damage_relations.no_damage_from.some(
-            (e) => e.name === pokemonInBattle[0].pokemonMovesTypes[j]
+          pokemonTypes[def][i].damage_relations.no_damage_from.some(
+            (e) => e.name === pokemonInBattle[att].pokemonMovesTypes[j]
           )
         ) {
           modifiers[i] = 0;
@@ -75,42 +75,10 @@ const Results = (pokemonInBattle, pokemonState) => {
       }
 
       //Will add this move's value to the pokemon score
-      pokemon1Score += modifiers[0] * modifiers[1];
+      pokemonScore += modifiers[0] * modifiers[1];
     }
 
-    return pokemon1Score;
-  };
-
-  const calculatePokemon2Score = () => {
-    pokemon2Score = 0;
-    for (let j = 0; j < 4; j++) {
-      let modifiers = [1, 1];
-      for (let i = 0; i < pokemonTypes[0].length; i++) {
-        if (
-          pokemonTypes[0][i].damage_relations.double_damage_from.some(
-            (e) => e.name === pokemonInBattle[1].pokemonMovesTypes[j]
-          )
-        ) {
-          modifiers[i] = 2;
-        } else if (
-          pokemonTypes[0][i].damage_relations.half_damage_from.some(
-            (e) => e.name === pokemonInBattle[1].pokemonMovesTypes[j]
-          )
-        ) {
-          modifiers[i] = 0.5;
-        } else if (
-          pokemonTypes[0][i].damage_relations.no_damage_from.some(
-            (e) => e.name === pokemonInBattle[1].pokemonMovesTypes[j]
-          )
-        ) {
-          modifiers[i] = 0;
-        }
-      }
-
-      pokemon2Score += modifiers[0] * modifiers[1];
-    }
-
-    return pokemon2Score;
+    return pokemonScore;
   };
 
   const calculateAdvantage = () => {
@@ -135,8 +103,8 @@ const Results = (pokemonInBattle, pokemonState) => {
   const RevealResults = () => {
     setButtonClicked(true);
     if (pokemonInBattle[0].pokemonObject) {
-      pokemon1Score = calculatePokemon1Score();
-      pokemon2Score = calculatePokemon2Score();
+      pokemon1Score = calculatePokemonScore(0, 1);
+      pokemon2Score = calculatePokemonScore(1, 0);
       console.log(pokemonState);
       pokemonState.updateScore(pokemon1Score, 0);
       pokemonState.updateScore(pokemon2Score, 1);
@@ -148,21 +116,41 @@ const Results = (pokemonInBattle, pokemonState) => {
     return (
       <>
         {pokemonInBattle[2].pokemonAtAdvantage ? (
-          <div className='winner-div'>
-            <img className='sparkles1' src='https://i.pinimg.com/originals/68/8e/9e/688e9eb45c2f5cc82361d5c305ccc0ca.gif'/>
-          <div
-            className="winner-img-div"
-            style={{
-              backgroundImage: `url( ${pokemonInBattle[2].pokemonAtAdvantage.sprites.front_default})`,
-            }}
-          ></div>
-          <img className='sparkles2' src='https://i.pinimg.com/originals/68/8e/9e/688e9eb45c2f5cc82361d5c305ccc0ca.gif'/>
+          <div className="winner-div">
+            <img
+              className="sparkles1"
+              src="https://i.pinimg.com/originals/68/8e/9e/688e9eb45c2f5cc82361d5c305ccc0ca.gif"
+            />
+            <div
+              className="winner-img-div"
+              style={{
+                backgroundImage: `url( ${pokemonInBattle[2].pokemonAtAdvantage.sprites.front_default})`,
+              }}
+            ></div>
+            <img
+              className="sparkles2"
+              src="https://i.pinimg.com/originals/68/8e/9e/688e9eb45c2f5cc82361d5c305ccc0ca.gif"
+            />
           </div>
         ) : (
           <></>
         )}
-        <h3 className='text-result' style={pokemonInBattle[2].pokemonAtAdvantage ? {color: `${TypeColors[pokemonInBattle[2].pokemonAtAdvantage.types[0].type.name]}`,
-            }: {visibility:'show' }}>{resultText}</h3>
+        <h3
+          className="text-result"
+          style={
+            pokemonInBattle[2].pokemonAtAdvantage
+              ? {
+                  color: `${
+                    TypeColors[
+                      pokemonInBattle[2].pokemonAtAdvantage.types[0].type.name
+                    ]
+                  }`,
+                }
+              : { visibility: "show" }
+          }
+        >
+          {resultText}
+        </h3>
       </>
     );
   } else {
