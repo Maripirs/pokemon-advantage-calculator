@@ -7,39 +7,40 @@ const Moves = (props) => {
   const [pokemonMoves, setPokemonMoves] = useState([]);
   //fetches 4 random moves from the options that the pokemon has
   function getMoves() {
-      let newPokemonMoves = [...pokemonMoves];
-      for (let i = 0; i < 4; i++) {
-        const randomMoveIndex = Math.floor(
-          Math.random() * props.pokemon.moves.length
-          );
+    let newPokemonMoves = [...pokemonMoves];
+    const promises = [];
+    for (let i = 0; i < 4; i++) {
+      const randomMoveIndex = Math.floor(
+        Math.random() * props.pokemon.moves.length
+      );
 
-          let movesURL = props.pokemon.moves[randomMoveIndex].move.url;
-          fetch(movesURL)
-          .then((response) => response.json())
-          .then((response) => {
-            newPokemonMoves[i] = {
-              moveName: response.name,
-              moveType: response.type.name,
-              moveID: response.id,
+      let movesURL = props.pokemon.moves[randomMoveIndex].move.url;
+      let promise = fetch(movesURL);
+      promises.push(promise);
+    }
+    let responsesPromise = Promise.all(promises);
+    responsesPromise.then((reponses) => {
+      Promise.all(reponses.map((response) => response.json())).then(
+        (movesData) => {
+          const prettyMoves = movesData.map((data, index) => {
+            props.pokemonState.updatePokemonMoveTypes(props.index, data.type.name, index);
+            return {
+              moveName: data.name,
+              moveType: data.type.name,
+              moveID: data.id,
             };
-            //Seting these moves in the general page state
-            props.pokemonState.updatePokemonMoveTypes(props.index, response.type.name, i);
-          })
-          .catch(console.error);
+          });
+        setPokemonMoves(prettyMoves)
         }
-        //just waiting for some things to fetch
-        setTimeout(()=>{
-          setPokemonMoves(newPokemonMoves)
-        }, 900)
-
+      );
+    });
   }
 
   useEffect(() => {
-    if (props.pokemon && props.pokemon){
+    if (props.pokemon && props.pokemon) {
       getMoves();
     }
   }, [props.pokemon]);
-
 
   const { GetDetails } = MovesDetails();
 
@@ -52,29 +53,36 @@ const Moves = (props) => {
     let movesArray = [];
     for (let i = 0; i < 4; i++) {
       movesArray[i] = pokemonMoves[i] ? (
-        <div className="move-row" onClick={handleClick} id={pokemonMoves[i].moveID}>
+        <div
+          className="move-row"
+          onClick={handleClick}
+          id={pokemonMoves[i].moveID}
+        >
           <div className="move-name">
             {pokemonMoves[i].moveName.charAt(0).toUpperCase() +
               pokemonMoves[i].moveName.slice(1)}
           </div>
-          <div className="type" style={{backgroundColor: `${TypeColors[pokemonMoves[i].moveType]}`}} >
+          <div
+            className="type"
+            style={{
+              backgroundColor: `${TypeColors[pokemonMoves[i].moveType]}`,
+            }}
+          >
             {pokemonMoves[i].moveType.charAt(0).toUpperCase() +
               pokemonMoves[i].moveType.slice(1)}
           </div>
         </div>
       ) : (
-        <>
-          {(i===2) ? 'loading' : ''}
-        </>
+        <>{i === 2 ? "loading" : ""}</>
       );
     }
 
     return (
       <>
-          {movesArray[0]}
-          {movesArray[1]}
-          {movesArray[2]}
-          {movesArray[3]}
+        {movesArray[0]}
+        {movesArray[1]}
+        {movesArray[2]}
+        {movesArray[3]}
       </>
     );
   };
