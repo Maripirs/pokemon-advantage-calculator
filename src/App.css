@@ -1,65 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-.App {
-  text-align: center;
-  font-family: 'Press Start 2P';
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    overscroll-behavior: none;
 }
-
+.App {
+    text-align: center;
+    height: 100vh;
+    font-family: "Press Start 2P";
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .App-header {
-  background-color:black;
-  height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  width: 100vw;
-  border-bottom: black solid .5vh;
-
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    width: 100vw;
+    border-bottom: black solid 3px;
 }
 
-.page-title{
-  background-color: #da1b1b;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+.page-title {
+    background-color: #da1b1b;
+    padding: 1.5rem;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-bottom: black solid 6px;
+    font-size: 2rem;
+    line-height: 1.5rem;
 }
 
-a{
-  text-decoration: none;
+a {
+    text-decoration: none;
 }
 
-#title-link{
-  width: 100%;
-  height: 50%;
+#title-link {
+    width: 100%;
+    height: fit-content;
+}
+.home .title {
+    line-height: 2rem;
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 10vh;
+    padding: 1rem;
+    flex-grow: 1;
 }
 
-
-main{
-display: flex;
-align-items: center;
-justify-content: space-around;
-flex-direction: column;
-height: 85vh;
+footer {
+    height: fit-content;
+    width: 100%;
+    font-size: 10px;
+    color: gray;
+}
+footer p {
+    padding: 0rem 2rem;
 }
 
-
-footer{
-  height: 3vh;
-  width: 100vw;
-  font-size: 10px;
-  color: gray;
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
-body{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-
+@media (max-width: 600px) {
+    .App-header {
+        border-bottom: 3px solid black;
+    }
+    .page-title {
+        font-size: 1rem;
+        min-height: 2rem;
+        border-bottom: 5px solid black;
+        padding: 0.5rem;
+    }
+    .home .title {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    .home .gif {
+        height: 8rem;
+        margin: 0.5rem;
+    }
+    .home .credits {
+        font-size: 0.6rem;
+    }
+    footer {
+        font-size: 0.4rem;
+    }
+    footer p {
+        padding: 0rem 1rem;
+    }
 }

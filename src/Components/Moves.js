@@ -7,7 +7,6 @@ const Moves = (props) => {
   const [pokemonMoves, setPokemonMoves] = useState([]);
   //fetches 4 random moves from the options that the pokemon has
   function getMoves() {
-    let newPokemonMoves = [...pokemonMoves];
     const promises = [];
     for (let i = 0; i < 4; i++) {
       const randomMoveIndex = Math.floor(
