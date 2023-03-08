@@ -23,20 +23,20 @@ body {
     align-items: center;
     font-size: 1rem;
     width: 100vw;
-    border-bottom: black solid 3px;
+    border-bottom: black solid 4px;
 }
 
 .page-title {
     background-color: #da1b1b;
-    padding: 1.5rem;
+    padding: 1.5rem 0.5rem;
     height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    border-bottom: black solid 6px;
+    border-bottom: black solid 8px;
     font-size: 2rem;
-    line-height: 1.5rem;
+    line-height: 2.5rem;
 }
 
 a {
@@ -83,7 +83,7 @@ body {
     }
     .page-title {
         font-size: 1rem;
-        min-height: 2rem;
+        line-height: 1.3rem;
         border-bottom: 5px solid black;
         padding: 0.5rem;
     }
