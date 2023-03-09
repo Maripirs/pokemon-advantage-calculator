@@ -87,6 +87,9 @@ body {
         border-bottom: 5px solid black;
         padding: 0.5rem;
     }
+    .home {
+        padding: 0.5rem;
+    }
     .home .title {
         font-size: 1rem;
         line-height: 1.5rem;
