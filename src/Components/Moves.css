@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-
-.moves-container{
+.moves-container {
     height: 100%;
     width: 90%;
     display: flex;
@@ -10,7 +9,7 @@
     justify-content: space-around;
 }
 
-.move-name{
+.move-name {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -20,10 +19,9 @@
     font-weight: bold;
 }
 
-
-.move-row{
+.move-row {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row;
 }

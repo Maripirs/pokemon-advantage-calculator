@@ -56,7 +56,7 @@ main {
     justify-content: space-around;
     flex-direction: column;
     height: 10vh;
-    padding: 1rem;
+    /* padding: 1rem; */
     flex-grow: 1;
 }
 
@@ -103,5 +103,8 @@ body {
     }
     footer p {
         padding: 0rem 1rem;
+    }
+    main {
+        width: 100%;
     }
 }
