@@ -3,9 +3,11 @@
     text-decoration: none;
     justify-content: space-around;
     width: 100vw;
-    font-size: 20px;
+    font-size: 1vh;
     background-color: white;
     height: fit-content;
+    border-bottom: 0.4vh solid black;
+    box-sizing: border-box;
 }
 .link {
     text-decoration: underline;

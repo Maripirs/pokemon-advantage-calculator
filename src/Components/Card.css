@@ -1,18 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .cards-container {
-    height: 33rem;
-    width: 22rem;
+    height: 30vh;
+    width: 20vh;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
-    box-shadow: -0.3rem 0.3rem 0 #000, 0.3rem 0.3rem 0 #000,
-        0.3rem -0.3rem 0 #000, -0.3rem -0.3rem 0 #000;
-    padding: 0.5rem;
-    border: 0.7rem solid transparent;
-    border-radius: 2rem;
-    margin-bottom: 2rem;
+    box-shadow: -0.3vh 0.3vh 0 #000, 0.3vh 0.3vh 0 #000, 0.3vh -0.3vh 0 #000,
+        -0.3vh -0.3vh 0 #000;
+    padding: 0.5vh;
+    border: 0.7vh solid transparent;
+    border-radius: 2vh;
+    margin-bottom: 2vh;
 }
 .card-score {
     height: 100%;
@@ -25,23 +25,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24rem;
-    height: 3rem;
-    border: 0.3rem rgb(146, 138, 138) solid;
-    border-radius: 1rem;
+    width: 24vh;
+    height: 3vh;
+    border: 0.3vh rgb(146, 138, 138) solid;
+    border-radius: 1vh;
+    font-size: 0.8vh;
 }
 .card-top {
-    height: 2rem;
-    padding: 0.5rem 0;
+    height: 2vh;
+    padding: 0.2vh 0;
     width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .card-bottom {
-    height: 25rem;
+    height: 12vh;
     width: 90%;
-    padding-top: 1rem;
+    padding-top: 1vh;
     flex-grow: 1;
     display: flex;
     justify-content: space-around;
@@ -49,13 +50,13 @@
     align-items: center;
 }
 .img-container {
-    height: 13rem;
-    width: 90%;
+    height: 12vh;
+    width: 18vh;
     background-size: cover;
     display: flex;
     justify-content: center;
     border: 0.3vh solid rgb(21, 21, 21);
-    border-radius: 1rem;
+    border-radius: 1vh;
 }
 
 .pokemon-img {
@@ -64,24 +65,24 @@
 }
 
 .card-name {
-    height: 30px;
+    height: 1vh;
     width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1vh;
 }
 
 .type {
     background-color: #c0c0c0;
-    border-radius: 0.5rem;
-    border: solid 2px black;
+    border-radius: 0.8vh;
+    border: solid 0.2vh black;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 9px;
+    font-size: 0.5vh;
     font-weight: bold;
-    height: 2em;
+    height: 2vh;
     color: white;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
         -1px -1px 0 #000;
@@ -89,12 +90,13 @@
 
 .move-row .type {
     width: 40%;
+    padding: 0vh 0.4vh;
 }
 
 .type-container .type {
-    padding: 0 1em;
-    margin-left: 0.5em;
-    font-size: 8px;
+    padding: 0 0.4vh;
+    /* margin-left: 0.5em; */
+    font-size: 0.6vh;
 }
 
 .type-container {
@@ -103,7 +105,7 @@
     align-items: center;
     width: 40%;
 }
-@media (max-width: 600px) {
+@media (max-width: 600px), (max-height: 800px) {
     .card-score {
         width: 100%;
         flex-direction: column;
@@ -111,7 +113,7 @@
     .cards-container {
         width: 15rem;
         max-width: 90%;
-        height: 7rem;
+        height: 8rem;
         padding: 0.2rem;
         border: 0.2rem solid transparent;
         border-radius: 0.7rem;
